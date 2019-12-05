@@ -22,7 +22,7 @@ function varargout = madlab(varargin)
 
 % Edit the above text to modify the response to help madlab
 
-% Last Modified by GUIDE v2.5 05-Dec-2019 15:09:34
+% Last Modified by GUIDE v2.5 05-Dec-2019 16:21:20
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -48,12 +48,17 @@ end
 function madlab_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
 % Initialize things HERE -------
+%Reposition each panel to same location as panel 1
+set(handles.P2,'position',get(handles.P1,'position'));
+set(handles.P2, 'visible', 'off');
+
 logo = imread('logo.jpg');
 set(gca,'XColor', 'none','YColor','none')
 axes(handles.logo_box);
 imshow(logo);
 
-handles.scene = "HOME";
+handles.scene = "-HOME-";
+handles.mouseSelect = "NONE";
 
 % Update ALL variables
 guidata(hObject, handles);
@@ -68,8 +73,9 @@ varargout{1} = handles.output;
 
 % --- Executes on button press in start_button.
 function start_button_Callback(hObject, eventdata, handles)
-handles.scene = "TEST";
-
+handles.scene = "-MENU-";
+set(handles.P1, 'visible', 'off');
+set(handles.P2, 'visible', 'on');
 guidata(hObject, handles);
 
 
@@ -77,15 +83,18 @@ guidata(hObject, handles);
 % --- Executes on mouse motion over figure - except title and menu.
 function madlab_WindowButtonMotionFcn(hObject, eventdata, handles)
 mouse = get(hObject, 'currentpoint');
-mX = mouse(1);
-mY = mouse(2);
-startBT = get(handles.start_button, 'position');
-sX = startBT(1); sY = startBT(2);
-sW = startBT(3); sH = startBT(4);
-
 setfigptr('circle', handles.madlab);
-if handles.scene == "HOME"
-    if mX >= sX && mX <= (sX + sW) && mY >= sY && mY <= (sY + sH)
-        setfigptr('coolpointer', handles.madlab);
-    end
+handles.mouseSelect = "NONE";
+switch handles.scene
+    case "-HOME-"
+        startBT = get(handles.start_button, 'position');
+        disp(startBT)
+        if checkHover(startBT, mouse)
+            handles.mouseSelect = "START";
+            setfigptr('cross', handles.madlab);
+        end
 end
+
+        
+        
+        
