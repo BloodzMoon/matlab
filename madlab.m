@@ -47,7 +47,7 @@ end
 % --- Executes just before madlab is made visible.
 function madlab_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
-% Initialize things HERE -------
+set(gcf,'Position',[0 0 790 450])
 %Reposition each panel to same location as panel 1
 set(handles.P2,'position',get(handles.P1,'position'));
 set(handles.P2, 'visible', 'off');
@@ -88,7 +88,7 @@ handles.mouseSelect = "NONE";
 switch handles.scene
     case "-HOME-"
         startBT = get(handles.start_button, 'position');
-        disp(startBT)
+        disp(mouse);
         if checkHover(startBT, mouse)
             handles.mouseSelect = "START";
             setfigptr('cross', handles.madlab);

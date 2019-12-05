@@ -1,7 +1,7 @@
 function [ isHover ] = checkHover( obj, mouse )
 % check if mouse is over the object
-oX = obj(1)+10.05; 
-oY = obj(2)+3.65;
+oX = obj(1)+111; % BUG fixed by add miracle number
+oY = obj(2);  
 oW = obj(3); 
 oH = obj(4);
 

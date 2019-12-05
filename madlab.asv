@@ -47,7 +47,7 @@ end
 % --- Executes just before madlab is made visible.
 function madlab_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
-% Initialize things HERE -------
+set(gcf,'Position',[9 332 1048 450]) 1048 653
 %Reposition each panel to same location as panel 1
 set(handles.P2,'position',get(handles.P1,'position'));
 set(handles.P2, 'visible', 'off');
@@ -57,7 +57,7 @@ set(gca,'XColor', 'none','YColor','none')
 axes(handles.logo_box);
 imshow(logo);
 
-handles.scene = "-HOME";
+handles.scene = "-HOME-";
 handles.mouseSelect = "NONE";
 
 % Update ALL variables
@@ -73,7 +73,7 @@ varargout{1} = handles.output;
 
 % --- Executes on button press in start_button.
 function start_button_Callback(hObject, eventdata, handles)
-handles.scene = "MENU";
+handles.scene = "-MENU-";
 set(handles.P1, 'visible', 'off');
 set(handles.P2, 'visible', 'on');
 guidata(hObject, handles);
@@ -85,17 +85,13 @@ function madlab_WindowButtonMotionFcn(hObject, eventdata, handles)
 mouse = get(hObject, 'currentpoint');
 setfigptr('circle', handles.madlab);
 handles.mouseSelect = "NONE";
-
 switch handles.scene
-    case "HOME"
+    case "-HOME-"
         startBT = get(handles.start_button, 'position');
-        if hover(startBT, mouse) == true
+        if checkHover(startBT, mouse)
             handles.mouseSelect = "START";
-            setfigptr('coolpointer', handles.madlab);
+            setfigptr('cross', handles.madlab);
         end
-        
-    case "MENU"
-    
 end
 
         
