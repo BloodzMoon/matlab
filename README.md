@@ -5,7 +5,7 @@
 
 ## About this
 
-MATLAB GUI created with *GUIDE*. This app is about matrix arithmetiic.
+MATLAB GUI created with *GUIDE*. This app is about matrix arithmetic.
 
 ## Credit
 
