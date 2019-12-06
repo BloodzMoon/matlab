@@ -22,7 +22,7 @@ function varargout = madlab(varargin)
 
 % Edit the above text to modify the response to help madlab
 
-% Last Modified by GUIDE v2.5 06-Dec-2019 00:18:50
+% Last Modified by GUIDE v2.5 06-Dec-2019 17:03:35
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -63,10 +63,19 @@ sizeicon = imread('size.jpg');
 axes(handles.size_icon);
 imshow(sizeicon);
 
+random2 = imread('random2.jpg');
+axes(handles.random_icon);
+imshow(random2);
+manual = imread('manual.jpg');
+axes(handles.manual_icon);
+imshow(manual);
+manual2 = imread('manual2.jpg');
+
 % Update ALL variables
 handles.scene = "-HOME-";
 handles.mouseSelect = "NONE";
 handles.matrix_size = 3;
+handles.mode = 0;
 guidata(hObject, handles);
 
 
@@ -92,12 +101,12 @@ function madlab_WindowButtonMotionFcn(hObject, eventdata, handles)
 mouse = hittest(hObject);
 setfigptr('circle', handles.madlab);
 handles.mouseSelect = "NONE";
-disp(mouse.Value);
+disp(mouse);
 switch handles.scene
     case "-HOME-"
-        if mouse.Value == 50
+        if mouse.UserData == 50
             handles.mouseSelect = "START";
-            setfigptr('cross', handles.madlab);
+            setfigptr('coolpointer', handles.madlab);
         end
     case "-MENU-"
         % reset color of size button
@@ -112,20 +121,44 @@ switch handles.scene
         end
         
         % hover size button
-        if mouse.Value == 62 && handles.size2_check.Value ~= 1
+        if mouse.UserData == 62 && handles.size2_check.Value ~= 1
             handles.mouseSelect = "SIZE2";
-            setfigptr('cross', handles.madlab);
+            setfigptr('coolpointer', handles.madlab);
             set(handles.size2_check, 'BackgroundColor', [0.5 0.5 0.5]);
         end
-        if mouse.Value == 63 && handles.size3_check.Value ~= 1
+        if mouse.UserData == 63 && handles.size3_check.Value ~= 1
             handles.mouseSelect = "SIZE3";
-            setfigptr('cross', handles.madlab);
+            setfigptr('coolpointer', handles.madlab);
             set(handles.size3_check, 'BackgroundColor', [0.5 0.5 0.5]);
         end
-        if mouse.Value == 64 && handles.size4_check.Value ~= 1
+        if mouse.UserData == 64 && handles.size4_check.Value ~= 1
             handles.mouseSelect = "SIZE4";
-            setfigptr('cross', handles.madlab);
+            setfigptr('coolpointer', handles.madlab);
             set(handles.size4_check, 'BackgroundColor', [0.5 0.5 0.5]);
+        end
+        
+        % reset color of mode button
+        
+        %if handles.random_icon.UserData == 66
+        %    imagesc(random, 'Parent', handles.random_icon)
+        %end
+        %if handles.manual_icon.UserData == 68
+        %    imagesc(manual, 'Parent', handles.random_icon)
+        %end
+        % hover mode button
+        if mouse.UserData == 66
+            handles.mouseSelect = "RANDOM";
+            setfigptr('coolpointer', handles.madlab);
+            imshow('random2.png', 'Parent', handles.random_icon);
+        end
+        if mouse.UserData == 68
+            handles.mouseSelect = "MANUAL";
+            setfigptr('coolpointer', handles.madlab);
+            axes(handles.manual_icon);
+            imshow(manual2, 'Parent', handles.manual_icon);
+        else
+            axes(handles.manual_icon);
+            imshow(manual, 'Parent', handles.manual_icon);
         end
 end
 guidata(hObject, handles);
@@ -135,6 +168,7 @@ guidata(hObject, handles);
 function madlab_WindowButtonDownFcn(hObject, eventdata, handles)
 switch handles.mouseSelect % must set button enable = inactive !!
     case "SIZE2"
+        handles.matrix_size = 2;
         set(handles.size2_check, 'Value', 1, 'BackgroundColor', [0.77 0.00 0.24]);
         set(handles.size3_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);
         set(handles.size4_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);
@@ -142,6 +176,7 @@ switch handles.mouseSelect % must set button enable = inactive !!
         set(handles.size3, 'FontWeight', 'normal');
         set(handles.size4, 'FontWeight', 'normal');
     case "SIZE3"
+        handles.matrix_size = 3;
         set(handles.size2_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);
         set(handles.size3_check, 'Value', 1, 'BackgroundColor', [0.77 0.00 0.24]);
         set(handles.size4_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);
@@ -149,12 +184,37 @@ switch handles.mouseSelect % must set button enable = inactive !!
         set(handles.size3, 'FontWeight', 'bold');
         set(handles.size4, 'FontWeight', 'normal');
     case "SIZE4"
+        handles.matrix_size = 4;
         set(handles.size2_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);
         set(handles.size3_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);
         set(handles.size4_check, 'Value', 1, 'BackgroundColor', [0.77 0.00 0.24]);
         set(handles.size2, 'FontWeight', 'normal');
         set(handles.size3, 'FontWeight', 'normal');
         set(handles.size4, 'FontWeight', 'bold');
+    
+    case "RANDOM"
+        handles.mode = 0;
+        set(handles.random_icon, 'UserData', 67);
+        imagesc(random2, 'Parent', handles.random_icon)
+        imagesc(manual, 'Parent', handles.manual_icon)
+    case "MANUAL"
+        handles.mode = 1;
+        set(handles.random_icon, 'UserData', 69);
+        imagesc(random, 'Parent', handles.random_icon)
+        imagesc(manual2, 'Parent', handles.manual_icon)
 end
 guidata(hObject, handles);
 
+
+% --- Executes on button press in pushbutton12.
+function pushbutton12_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton12 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton13.
+function pushbutton13_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton13 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)

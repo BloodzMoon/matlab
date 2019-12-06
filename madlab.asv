@@ -22,7 +22,7 @@ function varargout = madlab(varargin)
 
 % Edit the above text to modify the response to help madlab
 
-% Last Modified by GUIDE v2.5 06-Dec-2019 00:18:50
+% Last Modified by GUIDE v2.5 06-Dec-2019 14:18:28
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -62,11 +62,22 @@ imshow(logomini);
 sizeicon = imread('size.jpg');
 axes(handles.size_icon);
 imshow(sizeicon);
+random = imread('random.jpg');
+random2 = imread('random2.jpg');
+random3 = imread('random3.jpg');
+axes(handles.random_icon);
+imshow(random2);
+manual = imread('manual.jpg');
+manual2 = imread('manual2.jpg');
+manual3 = imread('manual3.jpg');
+axes(handles.manual_icon);
+imshow(manual);
 
 % Update ALL variables
 handles.scene = "-HOME-";
 handles.mouseSelect = "NONE";
 handles.matrix_size = 3;
+handles.mode = 0;
 guidata(hObject, handles);
 
 
@@ -95,7 +106,7 @@ handles.mouseSelect = "NONE";
 disp(mouse.Value);
 switch handles.scene
     case "-HOME-"
-        if mouse.Value == 50
+        if mouse.UserData == 50
             handles.mouseSelect = "START";
             setfigptr('cross', handles.madlab);
         end
@@ -112,49 +123,76 @@ switch handles.scene
         end
         
         % hover size button
-        if mouse.Value == 62 && handles.size2_check.Value ~= 1
+        if mouse.UserData == 62 && handles.size2_check.Value ~= 1
             handles.mouseSelect = "SIZE2";
             setfigptr('cross', handles.madlab);
             set(handles.size2_check, 'BackgroundColor', [0.5 0.5 0.5]);
         end
-        if mouse.Value == 63 && handles.size3_check.Value ~= 1
+        if mouse.UserData == 63 && handles.size3_check.Value ~= 1
             handles.mouseSelect = "SIZE3";
             setfigptr('cross', handles.madlab);
             set(handles.size3_check, 'BackgroundColor', [0.5 0.5 0.5]);
         end
-        if mouse.Value == 64 && handles.size4_check.Value ~= 1
+        if mouse.UserData == 64 && handles.size4_check.Value ~= 1
             handles.mouseSelect = "SIZE4";
             setfigptr('cross', handles.madlab);
             set(handles.size4_check, 'BackgroundColor', [0.5 0.5 0.5]);
         end
+        
+        % hover mode button
+        if mouse.UserData == 66
+            handles.mouseSelect = "RANDOM";
+            setfigptr('cross', handles.madlab);
+            axes(handles.random_icon);
+            imshow(random);
+        end
+        if mouse.UserData == 68
+            handles.mouseSelect = "MANUAL";
+            setfigptr('cross', handles.madlab);
 end
 guidata(hObject, handles);
 
 
 % --- Executes on mouse press over figure background, over a disabled or
 function madlab_WindowButtonDownFcn(hObject, eventdata, handles)
-switch handles.mouseSelect
+switch handles.mouseSelect % must set button enable = inactive !!
     case "SIZE2"
+        handles.matrix_size = 2;
         set(handles.size2_check, 'Value', 1, 'BackgroundColor', [0.77 0.00 0.24]);
         set(handles.size3_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);
         set(handles.size4_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);
-        set(handles.size2, 'Font', 1, 'BackgroundColor', [0.77 0.00 0.24]);
+        set(handles.size2, 'FontWeight', 'bold');
+        set(handles.size3, 'FontWeight', 'normal');
+        set(handles.size4, 'FontWeight', 'normal');
     case "SIZE3"
+        handles.matrix_size = 3;
         set(handles.size2_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);
         set(handles.size3_check, 'Value', 1, 'BackgroundColor', [0.77 0.00 0.24]);
         set(handles.size4_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);
+        set(handles.size2, 'FontWeight', 'normal');
+        set(handles.size3, 'FontWeight', 'bold');
+        set(handles.size4, 'FontWeight', 'normal');
     case "SIZE4"
+        handles.matrix_size = 4;
         set(handles.size2_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);
         set(handles.size3_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);
         set(handles.size4_check, 'Value', 1, 'BackgroundColor', [0.77 0.00 0.24]);
+        set(handles.size2, 'FontWeight', 'normal');
+        set(handles.size3, 'FontWeight', 'normal');
+        set(handles.size4, 'FontWeight', 'bold');
+    
+    case "RANDOM"
+        handles.mode = 0;
+        axes(handles.random_icon);
+        imshow(random2);
+        axes(handles.manual_icon);
+        imshow(manual);
+    case "MANUAL"
+        handles.mode = 1;
+        axes(handles.random_icon);
+        imshow(random);
+        axes(handles.manual_icon);
+        imshow(manua2);
 end
+set(handles.random_icon, 'UserData', 67);
 guidata(hObject, handles);
-
-
-% --- If Enable == 'on', executes on mouse press in 5 pixel border.
-% --- Otherwise, executes on mouse press in 5 pixel border or over size2.
-function size2_ButtonDownFcn(hObject, eventdata, handles)
-disp('KUYYYYYYYYYYYYYYYY');
-set(handles.size2_check, 'Value', 1, 'BackgroundColor', [0.77 0.00 0.24]);
-set(handles.size3_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);
-set(handles.size4_check, 'Value', 0, 'BackgroundColor', [0.65 0.65 0.65]);

@@ -495,7 +495,7 @@ switch lower(ptr)
      NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN
      NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN
        ];
-         hotspot = [9 9]; 
+         hotspot = [1 1];
          
     case 'none'
          
