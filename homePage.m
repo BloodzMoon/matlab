@@ -2,8 +2,6 @@
 function [ ] = homePage( hObject, handles )
 % This is a HOME page. Update mouseSelect and hover here
 
-setfigptr('circle', handles.madlab);
-handles.mouseSelect = "NONE";
 
 % -- Click me! button
 if checkHover(hObject, handles.start_button)
@@ -13,9 +11,11 @@ if checkHover(hObject, handles.start_button)
     set(handles.start_button, 'ForegroundColor', [0.77 0 0.24]);
     setfigptr('coolpointer', handles.madlab);
 else
+    handles.mouseSelect = "NONE";
     set(handles.start_button, 'Fontweight', 'normal');
     set(handles.start_button, 'Fontsize', 12);
     set(handles.start_button, 'ForegroundColor', [0 0 0]);
+    setfigptr('circle', handles.madlab);
 end
 
 guidata(hObject, handles);

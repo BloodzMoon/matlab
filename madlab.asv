@@ -22,7 +22,7 @@ function varargout = madlab(varargin)
 
 % Edit the above text to modify the response to help madlab
 
-% Last Modified by GUIDE v2.5 08-Dec-2019 01:24:37
+% Last Modified by GUIDE v2.5 08-Dec-2019 01:24:20
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -71,7 +71,7 @@ imshow(randomicon2);
 randomicon3 = imread('random3.jpg');
 axes(handles.random_icon3);
 imshow(randomicon3);
-set(handles.random_icon2,'position',get(handles.random_icon1,'position'));
+set(handles.random_icon1,'position',get(handles.offscreen,'position'));
 set(handles.random_icon3,'position',get(handles.offscreen,'position'));
 manualicon1 = imread('manual.jpg');
 axes(handles.manual_icon1);
@@ -107,7 +107,7 @@ switch handles.scene
     case "-MENU-"
         menuPage(hObject, handles);
 end
- disp(handles.input_mode); % DEBUG
+% disp(handles.matrix_size); % DEBUG
 
 
 
@@ -130,7 +130,4 @@ function size4_ButtonDownFcn(hObject, eventdata, handles)
 menuPageUpdate(hObject, handles);
 
 function random_box_ButtonDownFcn(hObject, eventdata, handles)
-menuPageUpdate(hObject, handles);
-
-function manual_box_ButtonDownFcn(hObject, eventdata, handles)
-menuPageUpdate(hObject, handles);
+menu
