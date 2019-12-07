@@ -85,87 +85,26 @@ guidata(hObject, handles);
 function varargout = madlab_OutputFcn(hObject, eventdata, handles) 
 varargout{1} = handles.output;
 
-
-% --- Executes on button press in start_button.
-function start_button_Callback(hObject, eventdata, handles)
-handles.scene = "-MENU-";
-set(handles.P1, 'visible', 'off');
-set(handles.P2, 'visible', 'on');
-setfigptr('circle', handles.madlab);
-guidata(hObject, handles);
-
-
-
 % --- Executes on mouse motion over figure - except title and menu.
 function madlab_WindowButtonMotionFcn(hObject, eventdata, handles)
-mouse = hittest(hObject);
-setfigptr('circle', handles.madlab);
-handles.mouseSelect = "NONE";
-disp(mouse);
+disp(handles.scene);
 switch handles.scene
     case "-HOME-"
-        if mouse.UserData == 50
-            handles.mouseSelect = "START";
-            setfigptr('coolpointer', handles.madlab);
-        end
+        homePage(hObject, handles);
     case "-MENU-"
-        % reset color of size button
-        if handles.size2_check.Value == 0
-            set(handles.size2_check, 'BackgroundColor', [0.65 0.65 0.65]);
-        end
-        if handles.size3_check.Value == 0
-            set(handles.size3_check, 'BackgroundColor', [0.65 0.65 0.65]);
-        end
-        if handles.size4_check.Value == 0
-            set(handles.size4_check, 'BackgroundColor', [0.65 0.65 0.65]);
-        end
-        
-        % hover size button
-        if mouse.UserData == 62 && handles.size2_check.Value ~= 1
-            handles.mouseSelect = "SIZE2";
-            setfigptr('coolpointer', handles.madlab);
-            set(handles.size2_check, 'BackgroundColor', [0.5 0.5 0.5]);
-        end
-        if mouse.UserData == 63 && handles.size3_check.Value ~= 1
-            handles.mouseSelect = "SIZE3";
-            setfigptr('coolpointer', handles.madlab);
-            set(handles.size3_check, 'BackgroundColor', [0.5 0.5 0.5]);
-        end
-        if mouse.UserData == 64 && handles.size4_check.Value ~= 1
-            handles.mouseSelect = "SIZE4";
-            setfigptr('coolpointer', handles.madlab);
-            set(handles.size4_check, 'BackgroundColor', [0.5 0.5 0.5]);
-        end
-        
-        % reset color of mode button
-        
-        %if handles.random_icon.UserData == 66
-        %    imagesc(random, 'Parent', handles.random_icon)
-        %end
-        %if handles.manual_icon.UserData == 68
-        %    imagesc(manual, 'Parent', handles.random_icon)
-        %end
-        % hover mode button
-        if mouse.UserData == 66
-            handles.mouseSelect = "RANDOM";
-            setfigptr('coolpointer', handles.madlab);
-            imshow('random2.png', 'Parent', handles.random_icon);
-        end
-        if mouse.UserData == 68
-            handles.mouseSelect = "MANUAL";
-            setfigptr('coolpointer', handles.madlab);
-            axes(handles.manual_icon);
-            imshow(manual2, 'Parent', handles.manual_icon);
-        else
-            axes(handles.manual_icon);
-            imshow(manual, 'Parent', handles.manual_icon);
-        end
+        menuPage(hObject, handles);
 end
-guidata(hObject, handles);
+disp(handles.mouseSelect);
 
 
 % --- Executes on mouse press over figure background, over a disabled or
 function madlab_WindowButtonDownFcn(hObject, eventdata, handles)
+
+switch handles.scene
+    case "-HOME-"
+        homePageUpdate(hObject, handles);
+end
+
 switch handles.mouseSelect % must set button enable = inactive !!
     case "SIZE2"
         handles.matrix_size = 2;
