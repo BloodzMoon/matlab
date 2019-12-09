@@ -1,3 +1,4 @@
+
 function [ ] = menuPage( hObject, handles )
 % This is a MENU page. Update mouseSelect and hover here
 
@@ -56,7 +57,7 @@ elseif (checkHover(hObject, handles.manual) || checkHover(hObject, handles.manua
     
 
 % -- Next button
-elseif checkHover(hObject, handles.next) && handles.next.Value == 0
+elseif checkHover(hObject, handles.next)
     handles.mouseSelect = "NEXT";
     set(handles.next, 'BackgroundColor', [0.12 0.69 0.69]);
     setfigptr('coolpointer', handles.madlab);
@@ -97,9 +98,8 @@ else
         set(handles.manual_icon, 'BackgroundColor', [0.94 0.94 0.94]);
     end
     % reset next button
-    if handles.next.Value == 0
-        set(handles.next, 'BackgroundColor', [0.26 0.75 0.78]);
-    end
+    set(handles.next, 'BackgroundColor', [0.26 0.75 0.78]);
+    
     setfigptr('circle', handles.madlab);
 end
 

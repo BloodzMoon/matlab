@@ -74,9 +74,6 @@ switch handles.mouseSelect
         if handles.input_mode == 0
             handles.scene = "-INPUT-";
             set(handles.P3, 'visible', 'on');
-        elseif handles.input_mode == 1
-            handles.scene = "-INPUT2-";
-            set(handles.P4, 'visible', 'on');
         end
        
         setfigptr('circle', handles.madlab);
