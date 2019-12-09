@@ -6,15 +6,13 @@ function [ ] = homePage( hObject, handles )
 % -- Click me! button
 if checkHover(hObject, handles.start_button)
     handles.mouseSelect = "START";
-    set(handles.start_button, 'Fontweight', 'bold');
     set(handles.start_button, 'Fontsize', 14);
-    set(handles.start_button, 'ForegroundColor', [0.77 0 0.24]);
+    set(handles.start_button, 'ForegroundColor', [0.98 0.32 0.52]);
     setfigptr('coolpointer', handles.madlab);
 else
     handles.mouseSelect = "NONE";
-    set(handles.start_button, 'Fontweight', 'normal');
     set(handles.start_button, 'Fontsize', 12);
-    set(handles.start_button, 'ForegroundColor', [0 0 0]);
+    set(handles.start_button, 'ForegroundColor', [1 1 1]);
     setfigptr('circle', handles.madlab);
 end
 

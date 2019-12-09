@@ -22,7 +22,7 @@ function varargout = madlab(varargin)
 
 % Edit the above text to modify the response to help madlab
 
-% Last Modified by GUIDE v2.5 08-Dec-2019 01:24:37
+% Last Modified by GUIDE v2.5 09-Dec-2019 16:11:57
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -50,45 +50,22 @@ handles.output = hObject;
 set(gcf,'Position',[0 0 790 450])
 % Reposition each panel to same location as panel 1
 set(handles.P2,'position',get(handles.P1,'position'));
+set(handles.P3,'position',get(handles.P1,'position'));
+set(handles.P4,'position',get(handles.P1,'position'));
 
 % Load all images here
 logo = imread('logo.jpg');
 axes(handles.logo_box);
 imshow(logo);
-logomini = imread('logobw.jpg');
-axes(handles.logomini_box);
-imshow(logomini);
-
-sizeicon = imread('size.jpg');
-axes(handles.size_icon);
-imshow(sizeicon);
-randomicon1 = imread('random.jpg');
-axes(handles.random_icon1);
-imshow(randomicon1);
-randomicon2 = imread('random2.jpg');
-axes(handles.random_icon2);
-imshow(randomicon2);
-randomicon3 = imread('random3.jpg');
-axes(handles.random_icon3);
-imshow(randomicon3);
-set(handles.random_icon2,'position',get(handles.random_icon1,'position'));
-set(handles.random_icon3,'position',get(handles.offscreen,'position'));
-manualicon1 = imread('manual.jpg');
-axes(handles.manual_icon1);
-imshow(manualicon1);
-manualicon2 = imread('manual2.jpg');
-axes(handles.manual_icon2);
-imshow(manualicon2);
-manualicon3 = imread('manual3.jpg');
-axes(handles.manual_icon3);
-imshow(manualicon3);
-set(handles.manual_icon2,'position',get(handles.offscreen,'position'));
-set(handles.manual_icon3,'position',get(handles.offscreen,'position'));
+menu = imread('menuBG.jpg');
+axes(handles.menubg);
+imshow(menu);
 
 % Update ALL variables
 handles.scene = "-HOME-";
 handles.mouseSelect = "NONE";
 handles.matrix_size = 3;
+handles.operation = 0; % 0 ADD | 1 SUB | 2 MUL | 3 INV
 handles.input_mode = 0;
 guidata(hObject, handles);
 
@@ -107,7 +84,7 @@ switch handles.scene
     case "-MENU-"
         menuPage(hObject, handles);
 end
- disp(handles.input_mode); % DEBUG
+ disp(handles.mouseSelect); % DEBUG
 
 
 
@@ -129,8 +106,29 @@ menuPageUpdate(hObject, handles);
 function size4_ButtonDownFcn(hObject, eventdata, handles)
 menuPageUpdate(hObject, handles);
 
-function random_box_ButtonDownFcn(hObject, eventdata, handles)
+function add_ButtonDownFcn(hObject, eventdata, handles)
 menuPageUpdate(hObject, handles);
 
-function manual_box_ButtonDownFcn(hObject, eventdata, handles)
+function sub_ButtonDownFcn(hObject, eventdata, handles)
+menuPageUpdate(hObject, handles);
+
+function mul_ButtonDownFcn(hObject, eventdata, handles)
+menuPageUpdate(hObject, handles);
+
+function inv_ButtonDownFcn(hObject, eventdata, handles)
+menuPageUpdate(hObject, handles);
+
+function random_ButtonDownFcn(hObject, eventdata, handles)
+menuPageUpdate(hObject, handles);
+
+function random_icon_ButtonDownFcn(hObject, eventdata, handles)
+menuPageUpdate(hObject, handles);
+
+function manual_ButtonDownFcn(hObject, eventdata, handles)
+menuPageUpdate(hObject, handles);
+
+function manual_icon_ButtonDownFcn(hObject, eventdata, handles)
+menuPageUpdate(hObject, handles);
+
+function next_ButtonDownFcn(hObject, eventdata, handles)
 menuPageUpdate(hObject, handles);
