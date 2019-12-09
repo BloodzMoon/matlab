@@ -22,7 +22,7 @@ function varargout = madlab(varargin)
 
 % Edit the above text to modify the response to help madlab
 
-% Last Modified by GUIDE v2.5 09-Dec-2019 20:23:33
+% Last Modified by GUIDE v2.5 10-Dec-2019 01:31:47
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -53,6 +53,15 @@ set(handles.P2,'position',get(handles.P1,'position'));
 set(handles.P3,'position',get(handles.P1,'position'));
 set(handles.P4,'position',get(handles.P1,'position'));
 set(handles.P5,'position',get(handles.P1,'position'));
+set(handles.sub_icon,'position',get(handles.add_icon,'position'));
+set(handles.mul_icon,'position',get(handles.add_icon,'position'));
+set(handles.inv_icon,'position',get(handles.add_icon,'position'));
+set(handles.sub_icon2,'position',get(handles.add_icon2,'position'));
+set(handles.mul_icon2,'position',get(handles.add_icon2,'position'));
+set(handles.inv_icon2,'position',get(handles.add_icon2,'position'));
+set(handles.matA, 'Data', cell(3,3));
+set(handles.matB, 'Data', cell(3,3));
+
 
 % Load all images here
 logo = imread('logo.jpg');
@@ -69,6 +78,7 @@ imshow(input);
 result = imread('resultBG.jpg');
 axes(handles.resultbg);
 imshow(result);
+
 
 % Update ALL variables
 handles.scene = "-HOME-";
@@ -156,9 +166,6 @@ menuPageUpdate(hObject, handles);
 function back_ButtonDownFcn(hObject, eventdata, handles)
 inputPageUpdate(hObject, handles);
 
-function back2_ButtonDownFcn(hObject, eventdata, handles)
-inputPage2Update(hObject, handles);
-
 function backmenu_ButtonDownFcn(hObject, eventdata, handles)
 resultPageUpdate(hObject, handles);
 
@@ -188,3 +195,18 @@ uicontrol(handles.maxB);
 
 function random_button_ButtonDownFcn(hObject, eventdata, handles)
 inputPageUpdate(hObject, handles);
+
+function back2_ButtonDownFcn(hObject, eventdata, handles)
+inputPage2Update(hObject, handles);
+
+function clearA_ButtonDownFcn(hObject, eventdata, handles)
+inputPage2Update(hObject, handles);
+
+function clearB_ButtonDownFcn(hObject, eventdata, handles)
+inputPage2Update(hObject, handles);
+
+function importA_ButtonDownFcn(hObject, eventdata, handles)
+inputPage2Update(hObject, handles);
+
+function importB_ButtonDownFcn(hObject, eventdata, handles)
+inputPage2Update(hObject, handles);

@@ -5,9 +5,7 @@ function [ ] = inputPage2Update( hObject, handles )
 
 switch handles.mouseSelect
     case "IMPORTA"
-        importMatrix(hObject, handles, 'A');
-    case "IMPORTB"
-        importMatrix(hObject, handles, 'B');
+        importMatrix
     case "CLEARA"
         N = handles.matrix_size;
         set(handles.matA, 'Data', cell(N,N));
