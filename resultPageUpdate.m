@@ -3,9 +3,11 @@ function [ ] = resultPageUpdate( hObject, handles )
 
 switch handles.mouseSelect
     case "BACKMENU"
-        set(handles.P4, 'visible', 'off');
+        set(handles.P5, 'visible', 'off');
         handles.scene = "-MENU-";
         set(handles.P2, 'visible', 'on');
+        handles.matrixA = [];
+        handles.matrixB = [];
         setfigptr('circle', handles.madlab);
 end
 

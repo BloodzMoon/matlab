@@ -122,6 +122,7 @@ switch handles.mouseSelect
         set(handles.random_icon, 'BackgroundColor', [0.98 0.32 0.52], 'ForegroundColor', [1 1 1]);
         set(handles.manual, 'Value', 0, 'BackgroundColor', [0.94 0.94 0.94], 'ForegroundColor', [0 0 0]);
         set(handles.manual_icon, 'BackgroundColor', [0.94 0.94 0.94], 'ForegroundColor', [0 0 0]);
+
     case "MANUAL"
         handles.input_mode = 1;
         set(handles.random, 'Value', 0, 'BackgroundColor', [0.94 0.94 0.94], 'ForegroundColor', [0 0 0]);

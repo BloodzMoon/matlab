@@ -22,7 +22,7 @@ function varargout = madlab(varargin)
 
 % Edit the above text to modify the response to help madlab
 
-% Last Modified by GUIDE v2.5 10-Dec-2019 01:31:47
+% Last Modified by GUIDE v2.5 10-Dec-2019 02:08:06
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -88,6 +88,7 @@ handles.operation = 0; % 0 ADD | 1 SUB | 2 MUL | 3 INV
 handles.input_mode = 0;
 handles.matrixA = [];
 handles.matrixB = [];
+handles.matrixC = [];
 guidata(hObject, handles);
 
 
@@ -163,12 +164,6 @@ menuPageUpdate(hObject, handles);
 function next_ButtonDownFcn(hObject, eventdata, handles)
 menuPageUpdate(hObject, handles);
 
-function back_ButtonDownFcn(hObject, eventdata, handles)
-inputPageUpdate(hObject, handles);
-
-function backmenu_ButtonDownFcn(hObject, eventdata, handles)
-resultPageUpdate(hObject, handles);
-
 function minA_ButtonDownFcn(hObject, eventdata, handles)
 set(handles.minA, 'String', '', 'Enable', 'on');
 set(handles.minA, 'ForegroundColor', [0 0 0]);
@@ -196,7 +191,16 @@ uicontrol(handles.maxB);
 function random_button_ButtonDownFcn(hObject, eventdata, handles)
 inputPageUpdate(hObject, handles);
 
-function back2_ButtonDownFcn(hObject, eventdata, handles)
+function cal_ButtonDownFcn(hObject, eventdata, handles)
+inputPageUpdate(hObject, handles);
+
+function back_ButtonDownFcn(hObject, eventdata, handles)
+inputPageUpdate(hObject, handles);
+
+function importA_ButtonDownFcn(hObject, eventdata, handles)
+inputPage2Update(hObject, handles);
+
+function importB_ButtonDownFcn(hObject, eventdata, handles)
 inputPage2Update(hObject, handles);
 
 function clearA_ButtonDownFcn(hObject, eventdata, handles)
@@ -205,8 +209,16 @@ inputPage2Update(hObject, handles);
 function clearB_ButtonDownFcn(hObject, eventdata, handles)
 inputPage2Update(hObject, handles);
 
-function importA_ButtonDownFcn(hObject, eventdata, handles)
+function back2_ButtonDownFcn(hObject, eventdata, handles)
 inputPage2Update(hObject, handles);
 
-function importB_ButtonDownFcn(hObject, eventdata, handles)
-inputPage2Update(hObject, handles);
+function backmenu_ButtonDownFcn(hObject, eventdata, handles)
+resultPageUpdate(hObject, handles);
+
+
+
+% --- Executes during object creation, after setting all properties.
+function uitable7_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to uitable7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
