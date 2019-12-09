@@ -22,7 +22,7 @@ function varargout = madlab(varargin)
 
 % Edit the above text to modify the response to help madlab
 
-% Last Modified by GUIDE v2.5 09-Dec-2019 18:30:30
+% Last Modified by GUIDE v2.5 09-Dec-2019 19:51:40
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -62,9 +62,8 @@ menu = imread('menuBG.jpg');
 axes(handles.menubg);
 imshow(menu);
 input = imread('inputBG.jpg');
-axes(handles.inputbg2);
+axes(handles.inputbg);
 imshow(input);
-input = imr
 axes(handles.inputbg2);
 imshow(input);
 result = imread('resultBG.jpg');
@@ -97,6 +96,8 @@ switch handles.scene
         menuPage(hObject, handles);
     case "-INPUT-"
         inputPage(hObject, handles);
+    case "-INPUT2-"
+        inputPage2(hObject, handles);
     case "-RESULT-"
         resultPage(hObject, handles);
 end
@@ -153,10 +154,15 @@ function back_ButtonDownFcn(hObject, eventdata, handles)
 inputPageUpdate(hObject, handles);
 
 function back2_ButtonDownFcn(hObject, eventdata, handles)
-input2PageUpdate(hObject, handles);
+inputPage2Update(hObject, handles);
 
 function backmenu_ButtonDownFcn(hObject, eventdata, handles)
 resultPageUpdate(hObject, handles);
 
+function minA_ButtonDownFcn(hObject, eventdata, handles)
+set(handles.minA, 'String', '', 'Enable', 'on')
+guidata(hObject, handles);
+uicontrol(handles.minA);
 
-
+function minA_KeyPressFcn(hObject, eventdata, handles)
+set(handles.minA, 'Value', '', 'Enable', 'on')

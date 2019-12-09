@@ -31,8 +31,10 @@ if handles.operation ~= 3
 end
 
 % Generate matrix
-for i = 0:matrix_size
-    randi([mina maxa]);
+switch handles.matrix_size
+    case 2
+        for i= 0: 2 
+            randi([mina maxa]);
 end
 
 guidata(hObject, handles);

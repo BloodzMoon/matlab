@@ -2,9 +2,14 @@
 function [ ] = inputPage( hObject, handles )
 % This is a INPUT random page. Update mouseSelect and hover here
 
-
+% -- Random button
+if checkHover(hObject, handles.random_button)
+    handles.mouseSelect = "RANDOM";
+    set(handles.random_button, 'BackgroundColor', [0.89 0.24 0.45]);
+    setfigptr('coolpointer', handles.madlab);
+    
 % -- Back button
-if checkHover(hObject, handles.back)
+elseif checkHover(hObject, handles.back)
     handles.mouseSelect = "BACK";
     set(handles.back, 'BackgroundColor', [0.12 0.69 0.69]);
     setfigptr('coolpointer', handles.madlab);
@@ -12,6 +17,8 @@ if checkHover(hObject, handles.back)
 % clear all button
 else
     handles.mouseSelect = "NONE";
+    % reset random button
+    set(handles.random_button, 'BackgroundColor', [0.98 0.32 0.52]);
     % reset back button
     set(handles.back, 'BackgroundColor', [0.26 0.75 0.78]);
     
