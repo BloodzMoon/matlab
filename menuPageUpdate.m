@@ -12,10 +12,10 @@ switch handles.mouseSelect
         set(handles.size2_icon, 'Visible', 'on');
         set(handles.size3_icon, 'Visible', 'off');
         set(handles.size4_icon, 'Visible', 'off');
-        set(handles.matA, 'Data', cell(2,2));
-        set(handles.matB, 'Data', cell(2,2));
-        set(handles.matArand, 'Data', cell(2,2));
-        set(handles.matBrand, 'Data', cell(2,2));
+        set(handles.matA, 'Data', zeros(2));
+        set(handles.matB, 'Data', zeros(2));
+        set(handles.matArand, 'Data', zeros(2));
+        set(handles.matBrand, 'Data', zeros(2));
     case "SIZE3"
         handles.matrix_size = 3;
         set(handles.size2, 'Value', 0, 'BackgroundColor', [0.94 0.94 0.94], 'ForegroundColor', [0 0 0]);
@@ -24,10 +24,10 @@ switch handles.mouseSelect
         set(handles.size2_icon, 'Visible', 'off');
         set(handles.size3_icon, 'Visible', 'on');
         set(handles.size4_icon, 'Visible', 'off');
-        set(handles.matA, 'Data', cell(3,3));
-        set(handles.matB, 'Data', cell(3,3));
-        set(handles.matArand, 'Data', cell(3,3));
-        set(handles.matBrand, 'Data', cell(3,3));
+        set(handles.matA, 'Data', zeros(3));
+        set(handles.matB, 'Data', zeros(3));
+        set(handles.matArand, 'Data', zeros(3));
+        set(handles.matBrand, 'Data', zeros(3));
     case "SIZE4"
         handles.matrix_size = 4;
         set(handles.size2, 'Value', 0, 'BackgroundColor', [0.94 0.94 0.94], 'ForegroundColor', [0 0 0]);
@@ -36,10 +36,10 @@ switch handles.mouseSelect
         set(handles.size2_icon, 'Visible', 'off');
         set(handles.size3_icon, 'Visible', 'off');
         set(handles.size4_icon, 'Visible', 'on');
-        set(handles.matA, 'Data', cell(4,4));
-        set(handles.matB, 'Data', cell(4,4));
-        set(handles.matArand, 'Data', cell(4,4));
-        set(handles.matBrand, 'Data', cell(4,4));
+        set(handles.matA, 'Data', zeros(4));
+        set(handles.matB, 'Data', zeros(4));
+        set(handles.matArand, 'Data', zeros(4));
+        set(handles.matBrand, 'Data', zeros(4));
     
         
     case "ADD"

@@ -23,6 +23,12 @@ elseif checkHover(hObject, handles.clearB)
     set(handles.clearB, 'BackgroundColor', [0.31 0.31 0.31]);
     setfigptr('coolpointer', handles.madlab);
     
+% -- Calculate button
+elseif checkHover(hObject, handles.cal2)
+    handles.mouseSelect = "CAL";
+    set(handles.cal2, 'BackgroundColor', [0.12 0.69 0.69]);
+    setfigptr('coolpointer', handles.madlab);
+
 % -- Back button
 elseif checkHover(hObject, handles.back2)
     handles.mouseSelect = "BACK";
@@ -38,6 +44,8 @@ else
     % reset clear button
     set(handles.clearA, 'BackgroundColor', [0.5 0.5 0.5]);
     set(handles.clearB, 'BackgroundColor', [0.5 0.5 0.5]);
+    % reset cal button
+    set(handles.cal2, 'BackgroundColor', [0.26 0.75 0.78]);
     % reset back button
     set(handles.back2, 'BackgroundColor', [0.26 0.75 0.78]);
     

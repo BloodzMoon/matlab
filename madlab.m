@@ -22,7 +22,7 @@ function varargout = madlab(varargin)
 
 % Edit the above text to modify the response to help madlab
 
-% Last Modified by GUIDE v2.5 10-Dec-2019 02:08:06
+% Last Modified by GUIDE v2.5 10-Dec-2019 13:52:29
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -44,11 +44,14 @@ end
 % End initialization code - DO NOT EDIT
 
 
+
+
+
 % --- Executes just before madlab is made visible.
 function madlab_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
 set(gcf,'Position',[0 0 790 450])
-% Reposition each panel to same location as panel 1
+% Reposition all extra object
 set(handles.P2,'position',get(handles.P1,'position'));
 set(handles.P3,'position',get(handles.P1,'position'));
 set(handles.P4,'position',get(handles.P1,'position'));
@@ -59,26 +62,22 @@ set(handles.inv_icon,'position',get(handles.add_icon,'position'));
 set(handles.sub_icon2,'position',get(handles.add_icon2,'position'));
 set(handles.mul_icon2,'position',get(handles.add_icon2,'position'));
 set(handles.inv_icon2,'position',get(handles.add_icon2,'position'));
-set(handles.matA, 'Data', cell(3,3));
-set(handles.matB, 'Data', cell(3,3));
-
+set(handles.matArand, 'Data', zeros(3));
+set(handles.matBrand, 'Data', zeros(3));
+set(handles.matA, 'Data', zeros(3));
+set(handles.matB, 'Data', zeros(3));
 
 % Load all images here
-logo = imread('logo.jpg');
 axes(handles.logo_box);
-imshow(logo);
-menu = imread('menuBG.jpg');
+imshow(imread('logo.jpg'));
 axes(handles.menubg);
-imshow(menu);
-input = imread('inputBG.jpg');
+imshow(imread('menuBG.jpg'));
 axes(handles.inputbg);
-imshow(input);
+imshow(imread('inputBG.jpg'));
 axes(handles.inputbg2);
-imshow(input);
-result = imread('resultBG.jpg');
+imshow(imread('inputBG.jpg'));
 axes(handles.resultbg);
-imshow(result);
-
+imshow(imread('resultBG.jpg'));
 
 % Update ALL variables
 handles.scene = "-HOME-";
@@ -86,9 +85,9 @@ handles.mouseSelect = "NONE";
 handles.matrix_size = 3;
 handles.operation = 0; % 0 ADD | 1 SUB | 2 MUL | 3 INV
 handles.input_mode = 0;
-handles.matrixA = [];
-handles.matrixB = [];
-handles.matrixC = [];
+handles.matrixA = zeros(3);
+handles.matrixB = zeros(3);
+handles.matrixC = zeros(3);
 guidata(hObject, handles);
 
 
@@ -122,6 +121,7 @@ end
  
  
 
+ 
 
 
 % All button here
@@ -209,6 +209,9 @@ inputPage2Update(hObject, handles);
 function clearB_ButtonDownFcn(hObject, eventdata, handles)
 inputPage2Update(hObject, handles);
 
+function cal2_ButtonDownFcn(hObject, eventdata, handles)
+inputPage2Update(hObject, handles);
+
 function back2_ButtonDownFcn(hObject, eventdata, handles)
 inputPage2Update(hObject, handles);
 
@@ -217,8 +220,3 @@ resultPageUpdate(hObject, handles);
 
 
 
-% --- Executes during object creation, after setting all properties.
-function uitable7_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to uitable7 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called

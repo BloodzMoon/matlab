@@ -10,26 +10,14 @@ switch handles.mouseSelect
         setfigptr('circle', handles.madlab);
         
     case "CAL"
-        if handles.random_button.Value == 1
-            handles.matrixA = get(handles.matArand, 'Data');
-            handles.matrixB = get(handles.matBrand, 'Data');
-            switch handles.operation
-                case 0 % add
-                    % -- ADDITION
-                case 1 % sub
-                    % -- SUBTRACTION
-                case 2 % mul
-                    % -- MULTIPLICATION
-                case 3 % inv
-                    % -- INVERTION
-            end
-            set(handles.P3, 'visible', 'off');
-            handles.scene = "-RESULT-";
-            set(handles.P5, 'visible', 'on');
-            setfigptr('circle', handles.madlab);
-        else
-            warndlg('Please random the number!');
-        end
+        % CALCULATE!
+        set(handles.matAresult, 'Data', get(handles.matArand, 'Data'));
+        set(handles.matBresult, 'Data', get(handles.matBrand, 'Data'));
+        set(handles.matC, 'Data', handles.matrixC);
+        set(handles.P3, 'visible', 'off');
+        handles.scene = "-RESULT-";
+        set(handles.P5, 'visible', 'on');
+        setfigptr('circle', handles.madlab);
         
     case "BACK"
         set(handles.P3, 'visible', 'off');
