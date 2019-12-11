@@ -60,6 +60,8 @@ switch handles.mouseSelect
         set(handles.disable2, 'Visible', 'off', 'Value', 0);
         set(handles.minB, 'Visible', 'on');
         set(handles.maxB, 'Visible', 'on');
+        set(handles.importB, 'Visible', 'on');
+        set(handles.clearB, 'Visible', 'on');
     case "SUB"
         handles.operation = 1;
         set(handles.add, 'Value', 0, 'BackgroundColor', [0.94 0.94 0.94], 'ForegroundColor', [0 0 0]);
@@ -78,6 +80,8 @@ switch handles.mouseSelect
         set(handles.disable2, 'Visible', 'off', 'Value', 0);
         set(handles.minB, 'Visible', 'on');
         set(handles.maxB, 'Visible', 'on');
+        set(handles.importB, 'Visible', 'on');
+        set(handles.clearB, 'Visible', 'on');
     case "MUL"
         handles.operation = 2;
         set(handles.add, 'Value', 0, 'BackgroundColor', [0.94 0.94 0.94], 'ForegroundColor', [0 0 0]);
@@ -96,6 +100,8 @@ switch handles.mouseSelect
         set(handles.disable2, 'Visible', 'off', 'Value', 0);
         set(handles.minB, 'Visible', 'on');
         set(handles.maxB, 'Visible', 'on');
+        set(handles.importB, 'Visible', 'on');
+        set(handles.clearB, 'Visible', 'on');
     case "INV"
         handles.operation = 3;
         set(handles.add, 'Value', 0, 'BackgroundColor', [0.94 0.94 0.94], 'ForegroundColor', [0 0 0]);
@@ -114,6 +120,8 @@ switch handles.mouseSelect
         set(handles.disable2, 'Visible', 'on', 'Value', 1);
         set(handles.minB, 'Visible', 'off');
         set(handles.maxB, 'Visible', 'off');
+        set(handles.importB, 'Visible', 'off');
+        set(handles.clearB, 'Visible', 'off');
         
         
     case "RANDOM"

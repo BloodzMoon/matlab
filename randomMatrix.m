@@ -44,6 +44,8 @@ end
 
 % Generate matrix
 N = handles.matrix_size;
+handles.matrixA = [];
+handles.matrixB = [];
 for i = 1:N
     tmpA = [];
     tmpB = [];

@@ -20,6 +20,16 @@ switch handles.mouseSelect
         
     case "CAL"
         % CALCULATE!
+        result = [];
+        X = get(handles.matA, 'Data');
+        Y = get(handles.matB, 'Data');
+        switch handles.operation
+            case 0 % -- Add
+                result = addMatrix(X,Y,handles.matrix_size);
+            case 1 % -- Sub
+                result = subMatrix(X,Y,handles.matrix_size);
+        end
+        handles.matrixC = result;
         set(handles.matAresult, 'Data', get(handles.matA, 'Data'));
         set(handles.matBresult, 'Data', get(handles.matB, 'Data'));
         set(handles.matC, 'Data', handles.matrixC);
