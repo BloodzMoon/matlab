@@ -30,6 +30,7 @@ switch handles.mouseSelect
                 set(handles.timeL, 'String', toc(start)*1000);
                 
                 start = tic;
+                result = addMatrixSpark(X,Y);
                 set(handles.timeS, 'String', toc(start)*1000);
             case 1 % -- Sub
                 start = tic;
@@ -45,6 +46,7 @@ switch handles.mouseSelect
                 set(handles.timeL, 'String', toc(start)*1000);
                 
                 start = tic;
+                result = mulMatrixSpark(X, Y);
                 set(handles.timeS, 'String', toc(start)*1000);
             case 3 % -- Inv
                 start = tic;
@@ -52,6 +54,7 @@ switch handles.mouseSelect
                 set(handles.timeL, 'String', toc(start)*1000);
                 
                 start = tic;
+                result = invMatrixSpark(X);
                 set(handles.timeS, 'String', toc(start)*1000);
         end
         handles.matrixC = result;

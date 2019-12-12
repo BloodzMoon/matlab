@@ -16,7 +16,7 @@ while i <= m
             r(i+1,:) = tmp;
         else
             r = zeros(m);
-            warndlg('Error guass' , 'modal');
+            warndlg('Error guass' , 'Warning', 'modal');
             return
         end
     end
