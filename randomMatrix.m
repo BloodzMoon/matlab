@@ -5,38 +5,38 @@ function [ ] = randomMatrix( hObject, handles )
 mina = round(str2double(get(handles.minA, 'String')));
 if isnan(mina)
     set(handles.minA, 'String', 'Min', 'Enable', 'inactive');
-    warndlg('Min value must be number');
+    warndlg('Min value must be number', 'modal');
     return
 end
 maxa = round(str2double(get(handles.maxA, 'String')));
 if isnan(maxa)
     set(handles.maxA, 'String', 'Max', 'Enable', 'inactive');
-    warndlg('Max value must be number');
+    warndlg('Max value must be number', 'modal');
     return
 end
 if mina > maxa
     set(handles.minA, 'String', 'Min', 'Enable', 'inactive');
     set(handles.maxA, 'String', 'Max', 'Enable', 'inactive');
-    warndlg('Min value must less than Max value');
+    warndlg('Min value must less than Max value', 'modal');
     return
 end
 if handles.operation ~= 3
     minb = round(str2double(get(handles.minB, 'String')));
     if isnan(minb)
         set(handles.minB, 'String', 'Min', 'Enable', 'inactive');
-        warndlg('Min value must be number');
+        warndlg('Min value must be number', 'modal');
         return
     end
     maxb = round(str2double(get(handles.maxB, 'String')));
     if isnan(maxb)
         set(handles.maxB, 'String', 'Max', 'Enable', 'inactive');
-        warndlg('Max value must be number');
+        warndlg('Max value must be number', 'modal');
         return
     end
     if minb > maxb
         set(handles.minB, 'String', 'Min', 'Enable', 'inactive');
         set(handles.maxB, 'String', 'Max', 'Enable', 'inactive');
-        warndlg('Min value must less than Max value');
+        warndlg('Min value must less than Max value', 'modal');
         return
     end
 end

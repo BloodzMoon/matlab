@@ -50,7 +50,7 @@ end
 % --- Executes just before madlab is made visible.
 function madlab_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
-set(gcf,'Position',[0 0 790 450])
+set(gcf,'Position',[0 0 210.8 46.2])
 % Reposition all extra object
 set(handles.P2,'position',get(handles.P1,'position'));
 set(handles.P3,'position',get(handles.P1,'position'));

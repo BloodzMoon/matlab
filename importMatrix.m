@@ -21,7 +21,7 @@ if ~isValid
         set(handles.matB, 'Data', M);
     end
 else
-    warndlg("Can't read data from file");
+    warndlg("Can't read data from file", 'modal');
     return
 end
 
