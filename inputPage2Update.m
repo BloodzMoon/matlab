@@ -23,12 +23,18 @@ switch handles.mouseSelect
         result = [];
         X = get(handles.matA, 'Data');
         Y = get(handles.matB, 'Data');
+        startL = tic;
         switch handles.operation
             case 0 % -- Add
                 result = addMatrix(X,Y,handles.matrix_size);
             case 1 % -- Sub
                 result = subMatrix(X,Y,handles.matrix_size);
+            case 2 % -- Mul
+                result = mulMatrix(X,Y,handles.matrix_size);
+            case 3 % -- Inv
+                result = invMatrix(X,handles.matrix_size);
         end
+        set(handles.timeL, 'String', toc(startL));
         handles.matrixC = result;
         set(handles.matAresult, 'Data', get(handles.matA, 'Data'));
         set(handles.matBresult, 'Data', get(handles.matB, 'Data'));

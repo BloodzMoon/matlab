@@ -21,9 +21,7 @@ switch handles.mouseSelect
             case 1 % -- Sub
                 result = subMatrix(X,Y,handles.matrix_size);
             case 2 % -- Mul
-                result = mulMatrix(X,Y,handles.matrix_size);
-            case 3 % -- Inv
-                result = invMatrix(X,handles.matrix_size);
+                result
         end
         set(handles.timeL, 'String', toc(startL));
         handles.matrixC = result;

@@ -1,0 +1,69 @@
+
+function [ r ] = invMatrix( x, size )
+r = x;
+I = eye(size);
+% -- append matrix
+r = [r I];
+
+i = 1;
+j = 1;
+while i <= size && j <= size
+    start = r
+    % -- swap if error
+    if r(i, j) == 0 
+        if i+1 <= size
+            tmp = r(i,:);
+            r(i,:) = r(i+1,:);
+            r(i+1,:) = tmp;
+        else
+            r = zeros(size);
+            warndlg('Error guass');
+            return
+        end
+    end
+    mid = r
+    % -- vector down divide alpha
+    if i+1 <= size
+        r(i+1:size, j) = r(i+1:size, j) / r(i, j);
+    end
+    % --  vector up divide alpha
+    if i-1 >= 1
+        r(1:i-1, j) = r(1:i-1, j) / r(i, j);
+    end
+    afterpermutation = r
+    % -- vector down multiply vector right
+    if i+1 <= size
+        tmp = r(i+1:size, j) * r(i, j+1:size*2);
+        r(i+1:size, j+1:size*2) = r(i+1:size, j+1:size*2) - tmp;
+    end
+    down = r
+    % -- vector up multiply vector right
+    if i-1 >= 1
+        tmp = r(1:i-1, j) * r(i, j+1:size*2);
+        r(1:i-1, j+1:size*2) = r(1:i-1, j+1:size*2) - tmp;
+    end
+    prezero = r
+    % -- set some to zeros
+    tmp = zeros(size);
+    if i-1 >= 1
+        r(1:i-1, j) = tmp(1:i-1, j);
+    end
+    if i+1 <= size
+        r(i+1:size, j) = tmp(i+1:size, j);
+    end
+    
+    endd = r
+    % -- move i j
+    i = i+1;
+    j = j+1;
+
+end
+
+% -- make identity
+for i = 1:size
+end
+
+r = r(:, size+1:size*2);
+
+
+return
