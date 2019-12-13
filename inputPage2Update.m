@@ -61,6 +61,7 @@ switch handles.mouseSelect
         set(handles.matAresult, 'Data', get(handles.matA, 'Data'));
         set(handles.matBresult, 'Data', get(handles.matB, 'Data'));
         set(handles.matC, 'Data', handles.matrixC);
+        
         set(handles.P4, 'visible', 'off');
         handles.scene = "-RESULT-";
         set(handles.P5, 'visible', 'on');
