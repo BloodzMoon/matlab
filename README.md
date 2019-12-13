@@ -3,7 +3,7 @@
 
 > KMITL 2019
 
-![Screen shot](https://github.com/BloodzMoon/matlab/blob/master/screenshot.png)
+![Screen shot](https://github.com/BloodzMoon/matlab/blob/master/MATLAB%20files/logo.jpg)
 
 ## About this
 
