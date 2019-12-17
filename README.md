@@ -1,7 +1,7 @@
 
 # Linear Algebra Assignment
 
-> KMITL 2019
+> KMITL 2019 (Assignment ENDED)
 
 ![Screen shot](https://github.com/BloodzMoon/matlab/blob/master/MATLAB%20files/logo.jpg)
 
